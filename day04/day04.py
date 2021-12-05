@@ -40,7 +40,6 @@ def bingo(numbers_list, row_list, col_list):
     nb = 5
     nb_list = bingo_dispenser(numbers_list, nb)
     while not winner:
-        print(nb_list)
         for i in range(len(row_list)):
             for j in range(len(row_list[i])):
                 if len(nb_list.intersection(row_list[i][j])) == 5:
@@ -87,7 +86,6 @@ def bingo_squid_win(numbers_list, row_list, col_list):
             nb += 6
             nb_list = bingo_dispenser(numbers_list, nb)
 
-    print(len(skip_list))
     return (skip_list[len(skip_list)-1], nb_list, last_number)
 
 
@@ -98,9 +96,6 @@ def find_solution(numbers_list, row_list, col_list, squid_win=False):
         value = bingo(numbers_list, row_list, col_list)
     grid_numbers = [nb for lst in value[0] for nb in lst]
     unfind_numbers = set(grid_numbers).difference(value[1])
-    # print(grid_numbers)
-    # print(sorted(grid_numbers))
-    # print(unfind_numbers)
     print(value[2])
     return sum(unfind_numbers) * value[2]
 
