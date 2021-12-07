@@ -9,12 +9,12 @@ def solve1(data_lst, non_linear=False):
     fuel_consumption = {}
     for pos in range(max(data_lst)):
         if non_linear:
-            fuel_cons = sum([sum(range(1, abs(x-pos)+1)) for x in data_lst])
+            fuel_cons = sum([(abs(x-pos)*(abs(x-pos)+1)/2) for x in data_lst])
         else:
             fuel_cons = sum([abs(x-pos) for x in data_lst])
         fuel_consumption[pos] = fuel_cons
         
-    return min(fuel_consumption.values())
+    return int(min(fuel_consumption.values()))
 
     
 print(solve1(full_data))
